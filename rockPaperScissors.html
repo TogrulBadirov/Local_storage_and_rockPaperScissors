@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<button id="rockButon">Rock</button>
+<button id="paperButon">Paper</button>
+<button id="scissorButton">Scissors</button>
+<div id="choosen"></div>
+
+    <script>
+        const rockButon = document.getElementById('rockButon')
+        const paperButon = document.getElementById('paperButon')
+        const scissorButton = document.getElementById('scissorButton')
+        const choosen = document.getElementById('choosen')
+        let chosed;
+        let status;
+        const arr = ['paper','scissor','rock']
+        rockButon.addEventListener('click',()=>{
+            chosed = 2
+            let botsChoise = getRandomNum()
+            
+            
+            compare(chosed,botsChoise)
+            choosen.innerHTML = `You Choosed ${arr[chosed]} </br> Bot Choosed ${arr[botsChoise]} </br>${status}`
+
+
+        })
+        paperButon.addEventListener('click',()=>{
+            chosed = 0
+            choosen.textContent = chosed
+            let botsChoise = getRandomNum()
+            
+            compare(chosed,botsChoise)
+            choosen.innerHTML = `You Choosed ${arr[chosed]} </br> Bot Choosed ${arr[botsChoise]} </br>${status}`
+
+        })
+        scissorButton.addEventListener('click',()=>{
+            chosed = 1
+            choosen.textContent = chosed
+            let botsChoise = getRandomNum()
+            
+            compare(chosed,botsChoise)
+            choosen.innerHTML = `You Choosed ${arr[chosed]} </br> Bot Choosed ${arr[botsChoise]} </br>${status}`
+
+        })
+
+        function getRandomNum(){
+            let randomNum = Math.floor(Math.random() * 3)
+            return randomNum
+        }
+        function compare(you,bot) {
+            if (you !== bot) {
+                if (bot  === (you +1)%3) {
+                    status = 'Bot win'
+                }
+                else{
+                    status = 'You win'
+                }
+            }
+            else{
+                status = 'tie'
+            }
+        }
+    </script>
+</body>
+</html>

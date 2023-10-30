@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <input type="text" placeholder="username" id="username">
+        <input type="password" placeholder="password" id="password">
+        <button id="save" id="save" >Save</button>
+    
+
+
+        <script>
+            const username = document.getElementById('username')
+            const password = document.getElementById('password')
+            const save = document.getElementById('save')
+            const user = JSON.parse(localStorage.getItem('user'))
+            if (user) {
+
+                username.value = user.name
+                password.value = user.password
+            }
+
+            save.addEventListener('click',()=>{
+                const obj  = {
+                    name: username.value,
+                    password: password.value
+                }
+                
+                localStorage.setItem('user',JSON.stringify(obj))
+                username.value = ''
+                password.value = ''
+            })
+        </script>
+</body>
+</html>
